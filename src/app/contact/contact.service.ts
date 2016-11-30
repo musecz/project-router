@@ -2,15 +2,15 @@ import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 
 export class Contact {
-    constructor(public id: number, public name: string, public lastname: string) {
+    constructor(public id: number, public firstname: string, public lastname: string) {
     }
 }
 
 const CONTACT: Array<Contact> = [
     new Contact(1, 'Tonton', 'Flingeur'),
-    new Contact(1, 'John', 'Doe'),
-    new Contact(1, 'Steven', 'Seagal'),
-    new Contact(1, 'Elvis', 'Bert')
+    new Contact(2, 'John', 'Doe'),
+    new Contact(3, 'Steven', 'Seagal'),
+    new Contact(4, 'Elvis', 'Bert')
 ];
 
 @Injectable()

@@ -1,0 +1,7 @@
+.contact-list {
+    display: inline-block;
+    margin-left: 15px;
+}
+.list-group-item:hover  {
+    cursor: pointer;
+}
