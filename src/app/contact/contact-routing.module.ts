@@ -12,6 +12,7 @@ import { ContactListComponent } from './contact-list/contact-list.component';
 /*
  * Guards
  * */
+import { ContactDetailResolveService } from './contact-detail-resolve.service';
 
 /*
  * Resolver
@@ -35,7 +36,10 @@ const contactRoutes: Routes = [
                     },
                     {
                         path: ":id",
-                        component: ContactDetailComponent
+                        component: ContactDetailComponent,
+                        resolve: {
+                            contact: ContactDetailResolveService
+                        }
                     }
                 ]
             }
@@ -49,6 +53,9 @@ const contactRoutes: Routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+      ContactDetailResolveService
   ]
 })
 export class  ContactRoutingModule{}

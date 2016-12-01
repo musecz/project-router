@@ -1,6 +1,6 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
-import { Router, ActivatedRoute} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 import {Contact, ContactService} from '../contact.service';
 
@@ -23,18 +23,19 @@ export class ContactListComponent implements OnInit, OnDestroy {
         this._contactSubscription = this._contactService.getContacts()
             .subscribe(contacts => this.contacts = contacts);
     }
+
     ngOnDestroy() {
         this._contactSubscription.unsubscribe();
     }
 
-    isSelected(contact: Contact){
+    isSelected(contact: Contact) {
         return this._selectedId === contact.id
     }
 
-    onSelect(contact: Contact){
+    onSelect(contact: Contact) {
         this._selectedId = contact.id;
         // Navigate with relative Link. Default: ['/contact', contact.id]
-        this._router.navigate([contact.id],{relativeTo: this._route})
+        this._router.navigate([contact.id], {relativeTo: this._route})
     }
 
 }

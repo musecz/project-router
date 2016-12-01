@@ -25,7 +25,7 @@ export class ContactService {
             setTimeout(() => {
                 observer.next(CONTACT);
                 observer.complete();
-            }, 3000);
+            }, 1000);
         });
     }
 
@@ -37,8 +37,9 @@ export class ContactService {
     getContact(id: number): Observable<Contact> {
         return Observable.create((observer) => {
             setTimeout(() => {
-                observer.next(this.contacts.find(contact => contact.id === id ))
-            },3000)
+                observer.next(this.contacts.find(contact => contact.id === +id));
+                observer.complete();
+            },1000)
         })
     }
 
