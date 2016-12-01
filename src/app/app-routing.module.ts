@@ -10,6 +10,10 @@ const appRoutes: Routes = [
     {
         path: 'contact',
         loadChildren: 'app/contact/contact.module#ContactModule'
+    },
+    {
+        path: 'admin',
+        loadChildren: 'app/admin/admin.module#AdminModule'
     }
 ];
 

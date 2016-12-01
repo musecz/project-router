@@ -1,3 +1,5 @@
-<p>
-  login works!
-</p>
+<h3 class="text-center">Espace d'identification</h3>
+<hr>
+<p>{{message}}</p>
+<button class="btn btn-primary btn-xs" *ngIf="!authService.isLoggedIn" (click)="login()" role="button">Login</button>
+<button class="btn btn-primary btn-xs" *ngIf="authService.isLoggedIn" (click)="logout()" role="button">Logout</button>
