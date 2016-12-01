@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+import { AuthGuard } from './shared/auth-guard.service';
 const appRoutes: Routes = [
     {
         path: '',
@@ -13,7 +13,8 @@ const appRoutes: Routes = [
     },
     {
         path: 'admin',
-        loadChildren: 'app/admin/admin.module#AdminModule'
+        loadChildren: 'app/admin/admin.module#AdminModule',
+        canLoad: [AuthGuard]
     }
 ];
 
@@ -22,8 +23,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   exports: [
-      RouterModule
-  ]
+    RouterModule
+  ],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule {}
 

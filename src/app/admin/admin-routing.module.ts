@@ -7,10 +7,11 @@ import {RouterModule, Routes} from '@angular/router';
 import {AdminComponent} from "./admin.component";
 import {ManageContactComponent} from "./manage-contact/manage-contact.component";
 import {AdmindashboardComponent} from "./admin-dashboard.component";
+
 /*
  * Guards
  * */
-
+import {AuthGuard} from "../shared/auth-guard.service";
 /*
  * Resolver
  * */
@@ -22,14 +23,23 @@ const adminRoutes: Routes = [
     {
         path: '',
         component: AdminComponent,
+        canActivate: [AuthGuard],
         children: [
             {
+                // On groupe les deux routes afin de les protéger avec authGuard
+                // Autrement il aurait fallu ajouter canActivateChild sur tous les enfants
                 path: '',
-                component: AdmindashboardComponent,
-            },
-            {
-                path: 'contact',
-                component: ManageContactComponent
+                canActivateChild: [AuthGuard],
+                children: [
+                    {
+                        path: '',
+                        component: AdmindashboardComponent,
+                    },
+                    {
+                        path: 'contact',
+                        component: ManageContactComponent
+                    }
+                ]
             }
          ]
     },
