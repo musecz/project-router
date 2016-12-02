@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
+import { PreloadSelectedModules } from '../shared/selective-preload-strategy.service';
 
 @Component({
     selector: 'app-admin-dashboard',
@@ -30,10 +31,11 @@ export class AdmindashboardComponent implements OnInit {
     sessionId: Observable<string>;
     token: Observable<string>;
     modules: string[];
-    constructor(private _route:ActivatedRoute) {
+    constructor(private _route:ActivatedRoute, private _preloadModules:PreloadSelectedModules) {
     }
 
     ngOnInit() {
+        this.modules = this._preloadModules.preloadedModules;
         // Capture de SessionID if available
         this.sessionId = this._route.queryParams.map(params => params['sessionId'] || 'None');
         // Capture the fragment if available
