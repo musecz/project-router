@@ -13,7 +13,7 @@ import { ContactListComponent } from './contact-list/contact-list.component';
  * Guards
  * */
 import { ContactDetailResolveService } from './contact-detail-resolve.service';
-
+import { CanDeactivateGuard } from '../shared/can-deactivate-guard.service';
 /*
  * Resolver
  * */
@@ -37,6 +37,7 @@ const contactRoutes: Routes = [
                     {
                         path: ":id",
                         component: ContactDetailComponent,
+                        canDeactivate: [CanDeactivateGuard],
                         resolve: {
                             contact: ContactDetailResolveService
                         }
@@ -55,7 +56,8 @@ const contactRoutes: Routes = [
     RouterModule
   ],
   providers: [
-      ContactDetailResolveService
+      ContactDetailResolveService,
+      CanDeactivateGuard
   ]
 })
 export class  ContactRoutingModule{}

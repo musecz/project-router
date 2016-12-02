@@ -4,12 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-
 import { AppRoutingModule } from './app-routing.module';
 import { LoginRoutingModule } from './login/login-routing.module';
 import { LoginComponent } from './login/login.component';
 
-
+import { DialogService } from './shared/dialog.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,7 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     LoginRoutingModule
   ],
-  providers: [],
+  providers: [DialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

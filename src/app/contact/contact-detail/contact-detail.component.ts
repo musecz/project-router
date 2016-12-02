@@ -2,6 +2,7 @@ import {Component, OnInit, HostBinding, trigger, transition, animate, style, sta
 import {ActivatedRoute, Router} from '@angular/router';
 
 import {Contact} from '../contact.service';
+import {DialogService} from "../../shared/dialog.service";
 
 @Component({
     selector: 'app-contact-detail',
@@ -42,13 +43,13 @@ export class ContactDetailComponent implements OnInit {
         return true;
     }
 
-    private _selectedId: number;
     public contact: Contact;
     public editFirstname: string;
     public editLastname: string;
 
     constructor(private _route: ActivatedRoute,
-                private _router: Router) {
+                private _router: Router,
+                public dialogService: DialogService) {
     }
 
     ngOnInit() {
@@ -68,6 +69,16 @@ export class ContactDetailComponent implements OnInit {
         this.contact.firstname = this.editFirstname;
         this.contact.lastname = this.editLastname;
         this.goToContact();
+    }
+
+    canDeactivate(): Promise<boolean> | boolean {
+        // Allow synchronous navigation (`true`) if no contact or the contact is unchanged
+        if (!this.contact || (this.contact.firstname === this.editFirstname && this.contact.lastname === this.editLastname)) {
+            return true;
+        }
+        // Otherwise ask the us er with the dialog service and return its
+        // promise which resolves to true or false when the user decides
+        return this.dialogService.confirm('Discard changes?');
     }
 
     goToContact() {

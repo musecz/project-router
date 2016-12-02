@@ -7,7 +7,7 @@ const appRoutes: Routes = [
     {
         path: '',
         redirectTo: '/contact',
-        pathMatch: 'full'
+        pathMatch: 'full',
     },
     {
         path: 'contact',
