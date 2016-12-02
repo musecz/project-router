@@ -1,0 +1,8 @@
+<h3 class="text-center">Details</h3>
+<hr>
+<div class="jumbotron">
+    <div class="list-group" *ngIf="account.id">
+        <span class="badge pull-left">{{ account.id }}</span>
+        <span class="contact-list">{{ account.username + ' - ' + account.twitter }}</span>
+    </div>
+</div>

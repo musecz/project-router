@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Resolve, ActivatedRouteSnapshot, Router} from '@angular/router';
 import {ContactDetailComponent} from './contact-detail/contact-detail.component';
-import {ContactService, Contact} from './contact.service';
-import {Observable} from "rxjs";
+import {ContactService} from './contact.service';
 
 @Injectable()
 export class ContactDetailResolveService implements Resolve<ContactDetailComponent> {

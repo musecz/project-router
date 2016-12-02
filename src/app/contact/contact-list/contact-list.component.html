@@ -1,6 +1,5 @@
-
 <div class="list-group">
-  <a class="list-group-item active"
+  <a class="list-group-item"
      *ngFor="let contact of contacts"
      [class.active]="isSelected(contact)"
      (click)="onSelect(contact)">

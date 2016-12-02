@@ -13,7 +13,7 @@ import { DialogService } from './shared/dialog.service';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

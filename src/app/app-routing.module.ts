@@ -20,6 +20,10 @@ const appRoutes: Routes = [
         path: 'admin',
         loadChildren: 'app/admin/admin.module#AdminModule',
         canLoad: [AuthGuard]
+    },
+    {
+        path: 'twitter',
+        loadChildren: 'app/twitter/twitter.module#TwitterModule'
     }
 ];
 
