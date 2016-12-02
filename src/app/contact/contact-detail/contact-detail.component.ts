@@ -10,26 +10,20 @@ import {DialogService} from "../../shared/dialog.service";
     styleUrls: ['./contact-detail.component.css'],
     animations: [
         trigger('routeAnimation', [
-            state('shown',
+            state('*',
                 style({
                     opacity: 1,
                     transform: 'translateX(0)'
                 })
             ),
-            state('hidden',
-                style({
-                    opacity: 0,
-                    transform: 'translateX(0)'
-                })
-            ),
-            transition('hidden => shown', [
+            transition(':enter', [
                 style({
                     opacity: 0,
                     transform: 'translateX(-100%)'
                 }),
                 animate('0.2s ease-in')
             ]),
-            transition('shown => hidden', [
+            transition(':leave', [
                 animate('0.5s ease-out', style({
                     opacity: 0,
                     transform: 'translateY(100%)'
@@ -41,6 +35,13 @@ import {DialogService} from "../../shared/dialog.service";
 export class ContactDetailComponent implements OnInit {
     @HostBinding('@routeAnimation') get routeAnimation() {
         return true;
+    }
+    @HostBinding('style.display') get display() {
+        return 'block';
+    }
+
+    @HostBinding('style.position') get position() {
+        return 'absolute';
     }
 
     public contact: Contact;
